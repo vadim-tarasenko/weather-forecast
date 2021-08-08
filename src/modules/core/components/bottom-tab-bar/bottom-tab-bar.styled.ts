@@ -17,3 +17,9 @@ export const Tab = styled.TouchableOpacity`
   color: #fff;
   height: 50px;
 `;
+
+export const TabText = styled.Text`
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: bold;
+`;
