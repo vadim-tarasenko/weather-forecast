@@ -10,7 +10,11 @@ const Tab = createBottomTabNavigator();
 
 const RootNavigation: FC = () => {
   return (
-    <Tab.Navigator tabBar={BottomTabBar}>
+    <Tab.Navigator
+      tabBar={BottomTabBar}
+      screenOptions={{
+        headerShown: false,
+      }}>
       <Tab.Screen name="Map" component={Map} />
       <Tab.Screen name="Search" component={WeatherSearch} />
     </Tab.Navigator>

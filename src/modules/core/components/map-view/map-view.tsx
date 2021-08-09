@@ -1,6 +1,7 @@
 import React, { FC, useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 import { MapEvent } from 'react-native-maps';
+// actions
 import { setWeatherLocation } from '../../../weather/weather.actions';
 
 import type { MapViewProps } from './map-view.interface';

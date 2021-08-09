@@ -8,13 +8,13 @@ import SearchIcon from '../../../../assets/icons/icon/search.svg';
 import type { SearchProps } from './search.interface';
 import { Root, Button } from './search.styled';
 
-const Search: FC<SearchProps> = () => {
+const Search: FC<SearchProps> = ({ inputProps, onSearchPress }) => {
   const theme = useTheme();
 
   return (
     <Root>
-      <Input placeholder="Type city name..." />
-      <Button>
+      <Input {...inputProps} />
+      <Button onPress={onSearchPress}>
         <SearchIcon width={32} height={32} color={theme.palette.primary} />
       </Button>
     </Root>

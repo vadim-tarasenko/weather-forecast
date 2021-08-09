@@ -19,11 +19,10 @@ class WeatherApiService {
     params: GetCurrentWeatherByCoordinatesParams,
   ) {
     return this.apiService.get<GetCurrentWeatherByCoordinatesResponse>(
-      '/data/2.5/weather',
+      '/current.json',
       {
-        appid: API_KEY,
-        lat: params.lat,
-        lon: params.lon,
+        key: API_KEY,
+        q: params.q,
       },
     );
   }
@@ -32,11 +31,11 @@ class WeatherApiService {
     params: GetWeekWeatherByCoordinatesParams,
   ) {
     return this.apiService.get<GetWeekWeatherByCoordinatesResponse>(
-      '/data/2.5/onecall',
+      '/forecast.json',
       {
-        appid: API_KEY,
-        lat: params.lat,
-        lon: params.lon,
+        key: API_KEY,
+        q: params.q,
+        days: 7,
       },
     );
   }

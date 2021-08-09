@@ -1,6 +1,6 @@
-import React, { FC, useCallback } from 'react';
+import React, { FC, useCallback, useEffect } from 'react';
 import { Marker, Callout } from 'react-native-maps';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigation } from '@react-navigation/native';
 // components
 import MapView from '../../modules/core/components/map-view';
@@ -8,30 +8,34 @@ import WeatherCallout from '../../modules/weather/components/weather-callout';
 // selectors
 import { selectWeatherLocation } from '../../modules/weather/weather.selectors';
 // hooks
-import { useService } from '../../modules/core/hooks/use-service';
 import { useCurrentWeatherQuery } from '../../modules/weather/hooks/use-current-weather-query';
-// services
-import WeatherDataService from '../../modules/weather/services/weather-data.service';
 
 import { Root } from './map.styled';
+import { setWeatherLocation } from '../../modules/weather/weather.actions';
 
 const Map: FC = () => {
   // hooks
+  const dispatch = useDispatch();
   const navigation = useNavigation();
   // selectors
   const weatherLocation = useSelector(selectWeatherLocation);
-  // services
-  const weatherDataService = useService(WeatherDataService);
   // queries
   const currentWeatherQuery = useCurrentWeatherQuery(
     {
-      lat: weatherLocation.lat ?? 0,
-      lon: weatherLocation.lon ?? 0,
+      q: `${weatherLocation.lat},${weatherLocation.lon}`,
     },
     {
       enabled: !!weatherLocation.lat && !!weatherLocation.lon,
     },
   );
+
+  useEffect(() => {
+    if (currentWeatherQuery.data) {
+      dispatch(
+        setWeatherLocation({ name: currentWeatherQuery.data.location.name }),
+      );
+    }
+  }, [currentWeatherQuery.data, dispatch]);
 
   const handleCalloutPress = useCallback(() => {
     navigation.navigate({ name: 'Search' });
@@ -49,10 +53,8 @@ const Map: FC = () => {
             }}>
             <Callout onPress={handleCalloutPress}>
               <WeatherCallout
-                locationName={currentWeatherQuery.data?.name ?? ''}
-                celsius={weatherDataService.getCelsiusFromKelvins(
-                  currentWeatherQuery.data?.main?.temp ?? 0,
-                )}
+                locationName={currentWeatherQuery.data?.location?.name ?? ''}
+                celsius={currentWeatherQuery.data?.current?.temp_c ?? 0}
               />
             </Callout>
           </Marker>

@@ -1,25 +1,29 @@
 export type GetCurrentWeatherByCoordinatesParams = {
-  lat: number;
-  lon: number;
+  q: string;
 };
 
 export type GetCurrentWeatherByCoordinatesResponse = {
-  name: string;
-  main: {
-    temp: number;
+  location: {
+    name: string;
+    region: string;
+    country: string;
+  };
+  current: {
+    temp_c: number;
   };
 };
 
 export type GetWeekWeatherByCoordinatesParams = {
-  lat: number;
-  lon: number;
+  q: string;
 };
 
 export type GetWeekWeatherByCoordinatesResponse = {
-  daily: {
-    dt: number;
-    temp: {
-      eve: number;
-    };
-  }[];
+  forecast: {
+    forecastday: {
+      date_epoch: number;
+      day: {
+        avgtemp_c: number;
+      };
+    }[];
+  };
 };
