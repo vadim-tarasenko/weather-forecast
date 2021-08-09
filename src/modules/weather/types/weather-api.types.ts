@@ -14,3 +14,12 @@ export type GetWeekWeatherByCoordinatesParams = {
   lat: number;
   lon: number;
 };
+
+export type GetWeekWeatherByCoordinatesResponse = {
+  daily: {
+    dt: number;
+    temp: {
+      eve: number;
+    };
+  }[];
+};

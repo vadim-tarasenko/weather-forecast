@@ -22,6 +22,7 @@ const MapView: FC<MapViewProps> = ({ children }) => {
   );
   return (
     <Map
+      mapType="standard"
       provider="google"
       onLongPress={handleLongPress}
       initialRegion={{

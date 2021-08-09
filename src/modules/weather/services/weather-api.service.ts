@@ -7,6 +7,7 @@ import type {
   GetCurrentWeatherByCoordinatesParams,
   GetCurrentWeatherByCoordinatesResponse,
   GetWeekWeatherByCoordinatesParams,
+  GetWeekWeatherByCoordinatesResponse,
 } from '../types/weather-api.types';
 
 @injectable()
@@ -30,11 +31,14 @@ class WeatherApiService {
   public getWeekWeatherByCoordinates(
     params: GetWeekWeatherByCoordinatesParams,
   ) {
-    return this.apiService.get('/data/2.5/onecall', {
-      appid: API_KEY,
-      lat: params.lat,
-      lon: params.lon,
-    });
+    return this.apiService.get<GetWeekWeatherByCoordinatesResponse>(
+      '/data/2.5/onecall',
+      {
+        appid: API_KEY,
+        lat: params.lat,
+        lon: params.lon,
+      },
+    );
   }
 }
 

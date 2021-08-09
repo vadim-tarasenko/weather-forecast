@@ -46,9 +46,7 @@ const Map: FC = () => {
             coordinate={{
               latitude: weatherLocation.lat,
               longitude: weatherLocation.lon,
-            }}
-            title={currentWeatherQuery.data?.name}
-            description={'some text'}>
+            }}>
             <Callout onPress={handleCalloutPress}>
               <WeatherCallout
                 locationName={currentWeatherQuery.data?.name ?? ''}

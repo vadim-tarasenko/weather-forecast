@@ -1,1 +1,4 @@
-export type WeatherCardProps = {};
+export type WeatherCardProps = {
+  day: string;
+  celsius: number;
+};

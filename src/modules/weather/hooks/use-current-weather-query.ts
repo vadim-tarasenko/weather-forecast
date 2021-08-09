@@ -9,7 +9,7 @@ import type {
   GetCurrentWeatherByCoordinatesResponse,
 } from '../types/weather-api.types';
 
-const WEEK_WEATHER_CACHE_KEY = 'week-weather';
+const WEEK_WEATHER_CACHE_KEY = 'current-weather';
 
 export const useCurrentWeatherQuery = (
   params: GetCurrentWeatherByCoordinatesParams,

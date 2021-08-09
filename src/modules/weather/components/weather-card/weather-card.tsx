@@ -3,10 +3,10 @@ import React, { FC } from 'react';
 import type { WeatherCardProps } from './weather-card.interface';
 import { Root, DayName, Degree } from './weather-card.styled';
 
-const WeatherCard: FC<WeatherCardProps> = () => (
+const WeatherCard: FC<WeatherCardProps> = ({ day, celsius }) => (
   <Root style={{ elevation: 1 }}>
-    <DayName>Monday</DayName>
-    <Degree>+3°</Degree>
+    <DayName>{day}</DayName>
+    <Degree>{celsius}°</Degree>
   </Root>
 );
 
