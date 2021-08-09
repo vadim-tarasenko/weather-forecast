@@ -1,7 +1,8 @@
 import React, { FC } from 'react';
 // components
 import Search from '../../modules/core/components/search';
-import WeatherCard from '../../modules/weather/components/weather-card';
+// containers
+import WeatherCardsList from '../../modules/weather/containers/weather-cards-list';
 
 import { Root, Content } from './weather-search.styled';
 
@@ -10,7 +11,7 @@ const WeatherSearch: FC = () => {
     <Root>
       <Content>
         <Search />
-        <WeatherCard />
+        <WeatherCardsList />
       </Content>
     </Root>
   );

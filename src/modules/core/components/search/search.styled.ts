@@ -7,9 +7,13 @@ export const Root = styled.View`
 `;
 
 export const Button = styled.TouchableOpacity`
+  align-items: center;
+  justify-content: center;
   width: 60px;
   flex-grow: 0;
   border: 1px solid ${props => props.theme.palette.primary};
   margin-left: 5px;
   border-radius: 30px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
 `;

@@ -8,7 +8,7 @@ export const Root = styled.View`
   height: 45px;
   border-radius: 6px;
   background-color: #85caff;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
 `;
 
 export const DayName = styled.Text`
