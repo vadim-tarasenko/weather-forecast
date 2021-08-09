@@ -4,17 +4,21 @@ import { ActionType, createReducer } from 'typesafe-actions';
 import * as weatherActions from './weather.actions';
 
 type WeatherLocationState = {
-  name: string;
-} | null;
+  lon: number | null;
+  lat: number | null;
+};
 
-const weatherLocationDefaultState: WeatherLocationState = null;
+const weatherLocationDefaultState: WeatherLocationState = {
+  lon: null,
+  lat: null,
+};
 
 const weatherLocationReducer = createReducer<
   WeatherLocationState,
   ActionType<typeof weatherActions>
 >(weatherLocationDefaultState).handleAction(
   weatherActions.setWeatherLocation,
-  state => state,
+  (state, { payload }) => ({ ...state, ...payload }),
 );
 
 export type WeatherState = {

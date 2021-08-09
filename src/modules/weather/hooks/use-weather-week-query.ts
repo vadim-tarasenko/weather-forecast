@@ -1,4 +1,4 @@
-import { useQuery } from 'react-query';
+import { useQuery, UseQueryOptions } from 'react-query';
 // services
 import WeatherApiService from '../services/weather-api.service';
 // hooks
@@ -10,10 +10,13 @@ const WEEK_WEATHER_CACHE_KEY = 'week-weather';
 
 export const useWeekWeatherQuery = (
   params: GetWeekWeatherByCoordinatesParams,
+  optionsUseQuery?: UseQueryOptions,
 ) => {
   const weatherApiService = useService(WeatherApiService);
 
-  return useQuery([WEEK_WEATHER_CACHE_KEY, params], () =>
-    weatherApiService.getWeekWeatherByCoordinates(params),
+  return useQuery(
+    [WEEK_WEATHER_CACHE_KEY, params],
+    () => weatherApiService.getWeekWeatherByCoordinates(params),
+    optionsUseQuery,
   );
 };
