@@ -1,11 +1,14 @@
 import React, { FC } from 'react';
-import { Text, View } from 'react-native';
+// components
+import MapView from '../../modules/core/components/map-view';
+
+import { Root } from './map.styled';
 
 const Map: FC = () => {
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Home!</Text>
-    </View>
+    <Root>
+      <MapView />
+    </Root>
   );
 };
 

@@ -1,8 +1,7 @@
 import styled from 'styled-components/native';
 
 export const Root = styled.View`
-  height: 50px;
-  width: 100%;
+  flex: 1;
   background-color: #fff;
 `;
 

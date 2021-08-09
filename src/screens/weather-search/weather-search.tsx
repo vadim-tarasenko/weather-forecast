@@ -1,13 +1,14 @@
 import React, { FC } from 'react';
+// components
+import Search from '../../modules/core/components/search';
 
-import Input from '../../modules/core/components/input';
 import { Root, Content } from './weather-search.styled';
 
 const WeatherSearch: FC = () => {
   return (
     <Root>
       <Content>
-        <Input />
+        <Search />
       </Content>
     </Root>
   );
