@@ -1,4 +1,4 @@
-import styled from 'styled-components/native';
+import styled, { css } from 'styled-components/native';
 
 export const Root = styled.View`
   position: absolute;
@@ -8,7 +8,9 @@ export const Root = styled.View`
   bottom: 34px;
 `;
 
-export const Tab = styled.TouchableOpacity`
+export const Tab = styled.TouchableOpacity.attrs({
+  activeOpacity: 0.9,
+})<{ isActive: boolean }>`
   align-items: center;
   justify-content: center;
   flex: 1;
@@ -16,6 +18,12 @@ export const Tab = styled.TouchableOpacity`
   background: ${props => props.theme.palette.primary};
   color: #fff;
   height: 50px;
+
+  ${props =>
+    !props.isActive &&
+    css`
+      background-color: #63adee;
+    `}
 `;
 
 export const TabText = styled.Text`

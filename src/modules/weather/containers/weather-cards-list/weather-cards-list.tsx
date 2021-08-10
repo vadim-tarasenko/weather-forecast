@@ -10,7 +10,7 @@ import { selectWeatherLocation } from '../../weather.selectors';
 import { useWeatherWeekQuery } from '../../hooks/use-weather-week-query';
 
 import type { WeatherCardsListProps } from './weather-cards-list.interface';
-import { Root, CardWrapper } from './weather-cards-list.styled';
+import { Root, CardWrapper, Content } from './weather-cards-list.styled';
 
 const WeatherCardsList: FC<WeatherCardsListProps> = () => {
   // selectors
@@ -36,14 +36,16 @@ const WeatherCardsList: FC<WeatherCardsListProps> = () => {
           onRefresh={weatherWeekQuery.refetch}
         />
       }>
-      {weatherWeekQuery.data?.forecast?.forecastday?.map(weather => (
-        <CardWrapper key={weather.date_epoch}>
-          <WeatherCard
-            day={format(fromUnixTime(weather.date_epoch), 'dd, iiii')}
-            celsius={weather.day.avgtemp_c ?? 0}
-          />
-        </CardWrapper>
-      ))}
+      <Content>
+        {weatherWeekQuery.data?.forecast?.forecastday?.map(weather => (
+          <CardWrapper key={weather.date_epoch}>
+            <WeatherCard
+              day={format(fromUnixTime(weather.date_epoch), 'dd, iiii')}
+              celsius={weather.day.avgtemp_c ?? 0}
+            />
+          </CardWrapper>
+        ))}
+      </Content>
     </Root>
   );
 };

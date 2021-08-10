@@ -14,7 +14,7 @@ const Search: FC<SearchProps> = ({ inputProps, onSearchPress }) => {
   return (
     <Root>
       <Input {...inputProps} />
-      <Button onPress={onSearchPress}>
+      <Button onPress={onSearchPress} style={theme.elevation.small}>
         <SearchIcon width={32} height={32} color={theme.palette.primary} />
       </Button>
     </Root>
